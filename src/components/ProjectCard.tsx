@@ -4,7 +4,6 @@ import { motion } from 'motion/react';
 
 export const ProjectCard = ({
   imgSrc,
-  projectLink,
   tags,
   title,
 }: ProjectType) => {
