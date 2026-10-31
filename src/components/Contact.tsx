@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 import { staggerContainer } from '@/lib/animations';
 import { SectionHeaders } from '@/components/SectionHeaders';
 import { Button } from '@/components/ui/button';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { useState } from 'react';
 
 type ContactFormValues = {
@@ -32,12 +33,15 @@ export const Contact = () => {
     mode: 'onTouched',
   });
 
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error';
-    message: string;
-  } | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaKey, setCaptchaKey] = useState(0);
 
   const onSubmit = async (values: ContactFormValues) => {
+    if (!captchaToken) {
+      toast.error('Please verify that you are not a robot.');
+      return;
+    }
+
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -48,23 +52,23 @@ export const Contact = () => {
           email: values.email,
           phone: values.phone,
           message: values.message,
+          'g-recaptcha-response': captchaToken,
         },
         {
           publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
         },
       );
 
-      toast.success('Message sent successfully!', {
-        description: 'Thank you for reaching out. I will get back to you soon.',
-      });
-
+      toast.success('Message sent successfully!');
       form.reset();
+      setCaptchaToken(null);
+      setCaptchaKey((prev) => prev + 1);
     } catch (error) {
       console.error('EmailJS Error:', error);
 
-      toast.error('Failed to send message', {
-        description: 'Something went wrong. Please try again later.',
-      });
+      toast.error('Failed to send message. Please try again.');
+      setCaptchaToken(null);
+      setCaptchaKey((prev) => prev + 1);
     }
   };
 
@@ -208,26 +212,21 @@ export const Contact = () => {
           />
         </div>
 
+        <ReCAPTCHA
+          key={captchaKey}
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+          onChange={setCaptchaToken}
+          onExpired={() => setCaptchaToken(null)}
+          className='mt-6'
+        />
+
         <Button
           type='submit'
           size='lg'
-          disabled={form.formState.isSubmitting}
+          disabled={form.formState.isSubmitting || !captchaToken}
         >
           {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
         </Button>
-
-        {submitStatus && (
-          <p
-            role='status'
-            className={
-              submitStatus.type === 'success'
-                ? 'text-sm text-green-500'
-                : 'text-sm text-red-500'
-            }
-          >
-            {submitStatus.message}
-          </p>
-        )}
       </form>
     </motion.section>
   );
