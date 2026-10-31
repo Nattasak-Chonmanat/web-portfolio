@@ -6,8 +6,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Field, FieldLabel, FieldError } from '@/components/ui/field';
 
 import { staggerContainer } from '@/lib/animations';
-import { SectionHeaders } from './SectionHeaders';
-import { Button } from './ui/button';
+import { SectionHeaders } from '@/components/SectionHeaders';
+import { Button } from '@/components/ui/button';
 
 type ContactFormValues = {
   name: string;
