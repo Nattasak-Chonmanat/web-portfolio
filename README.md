@@ -1,75 +1,115 @@
-# React + TypeScript + Vite
+# Web Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive personal portfolio built with React, TypeScript, and Vite. It presents professional experience, selected projects, activities, technical tools, a downloadable resume, and a contact form.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Responsive single-page portfolio layout
+- Smooth scrolling powered by Lenis
+- Scroll-triggered animations with Motion
+- Sections for About, Projects, Activities, Resume, and Contact
+- Contact form validation with React Hook Form
+- Email delivery through EmailJS
+- Google reCAPTCHA protection for the contact form
+- Toast notifications with Sonner
+- Tailwind CSS styling with shadcn/ui components
+- Downloadable CV served from `public/Nattasak_CV.pdf`
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Motion
+- Lenis
+- React Hook Form
+- EmailJS
+- Google reCAPTCHA
+- ESLint and Prettier
 
-## Expanding the ESLint configuration
+## Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 20 or newer recommended
+- npm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Clone the repository and enter the project directory.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   ```bash
+   git clone https://github.com/Nattasak-Chonmanat/web-portfolio
+   cd web-portfolio
+   ```
 
+2. Install dependencies.
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env.local` file in the project root and add the contact form configuration:
+
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+   VITE_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+   ```
+
+   These values are used by the browser-side contact form. Configure the matching EmailJS service/template and reCAPTCHA site key in their respective dashboards. Never commit private credentials or secret keys.
+
+4. Start the development server.
+
+   ```bash
+   npm run dev
+   ```
+
+   Vite will print the local URL, typically `http://localhost:5173`.
+
+## Available scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server with hot reload |
+| `npm run build` | Type-check and create a production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint across the project |
+
+## Project structure
+
+```text
+public/             Static images, icons, and downloadable CV
+src/
+  components/       Portfolio sections and reusable UI components
+  constants/        Navigation, project, activity, education, and tool data
+  lib/              Shared utilities and animation helpers
+  types/            TypeScript data types
+  App.tsx           Main page composition
+  index.css         Global styles and Tailwind theme
+  main.tsx          Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Customizing the portfolio
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Update portfolio content in `src/constants/index.tsx`.
+- Replace images and static files in `public/`.
+- Replace `public/Nattasak_CV.pdf` with the current resume, keeping the same filename or updating the resume component accordingly.
+- Update social links and navigation items in `src/constants/index.tsx`.
+- Update the EmailJS template so its variables match the fields submitted by `src/components/Contact.tsx`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Production build
 
+Run the following commands to validate and build the site:
+
+```bash
+npm run lint
+npm run build
+npm run preview
 ```
+
+The generated static site is placed in `dist/` and can be deployed to any static hosting provider, such as Vercel, Netlify, GitHub Pages, or an equivalent service. Add the `VITE_*` environment variables in the hosting provider's project settings before deploying.
+
+## License
+
+This project is a personal portfolio. Add or replace this section with the license terms you want to apply before redistributing the source code or assets.
