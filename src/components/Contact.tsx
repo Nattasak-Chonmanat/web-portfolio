@@ -1,13 +1,16 @@
 import { useForm, Controller } from 'react-hook-form';
 import { motion } from 'motion/react';
+import emailjs from '@emailjs/browser';
 
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Field, FieldLabel, FieldError } from '@/components/ui/field';
+import { toast } from 'sonner';
 
 import { staggerContainer } from '@/lib/animations';
 import { SectionHeaders } from '@/components/SectionHeaders';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 type ContactFormValues = {
   name: string;
@@ -29,8 +32,40 @@ export const Contact = () => {
     mode: 'onTouched',
   });
 
-  const onSubmit = (values: ContactFormValues) => {
-    console.log(values);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error';
+    message: string;
+  } | null>(null);
+
+  const onSubmit = async (values: ContactFormValues) => {
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: values.name,
+          company: values.company,
+          email: values.email,
+          phone: values.phone,
+          message: values.message,
+        },
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        },
+      );
+
+      toast.success('Message sent successfully!', {
+        description: 'Thank you for reaching out. I will get back to you soon.',
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+
+      toast.error('Failed to send message', {
+        description: 'Something went wrong. Please try again later.',
+      });
+    }
   };
 
   return (
@@ -78,9 +113,7 @@ export const Contact = () => {
           <Controller
             name='company'
             control={form.control}
-            rules={
-              {required: 'Company name is required.'}
-            }
+            rules={{ required: 'Company name is required.' }}
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>Company</FieldLabel>
@@ -178,9 +211,23 @@ export const Contact = () => {
         <Button
           type='submit'
           size='lg'
+          disabled={form.formState.isSubmitting}
         >
-          Send Message
+          {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
         </Button>
+
+        {submitStatus && (
+          <p
+            role='status'
+            className={
+              submitStatus.type === 'success'
+                ? 'text-sm text-green-500'
+                : 'text-sm text-red-500'
+            }
+          >
+            {submitStatus.message}
+          </p>
+        )}
       </form>
     </motion.section>
   );

@@ -6,6 +6,7 @@ import { Contact } from '@/components/Contact';
 import Lenis from 'lenis';
 import { useEffect } from 'react';
 import { Activities } from '@/components/Activities';
+import { Toaster } from 'sonner';
 
 const App = () => {
   useEffect(() => {
@@ -20,14 +21,20 @@ const App = () => {
   }, []);
 
   return (
-    <main className='flex flex-col container mx-auto p-10 max-w-4xl lg:pr-10 lg:pl-10 lg:max-w-6xl'>
-      <Hero />
-      <About />
-      <Projects />
-      <Activities />
-      <Resume />
-      <Contact />
-    </main>
+    <>
+      <Toaster
+        position='top-right'
+      />
+
+      <main className='flex flex-col container mx-auto p-10 max-w-4xl lg:pr-10 lg:pl-10 lg:max-w-6xl'>
+        <Hero />
+        <About />
+        <Projects />
+        <Activities />
+        <Resume />
+        <Contact />
+      </main>
+    </>
   );
 };
 
