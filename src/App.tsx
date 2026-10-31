@@ -1,10 +1,11 @@
 import { Hero } from '@/components/Hero';
 import { Projects } from '@/components/Projects';
-import { About } from './components/About';
-import { Resume } from './components/Resume';
-import { Contact } from './components/Contact';
+import { About } from '@/components/About';
+import { Resume } from '@/components/Resume';
+import { Contact } from '@/components/Contact';
 import Lenis from 'lenis';
 import { useEffect } from 'react';
+import { Activities } from '@/components/Activities';
 
 const App = () => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const App = () => {
       <Hero />
       <About />
       <Projects />
+      <Activities />
       <Resume />
       <Contact />
     </main>

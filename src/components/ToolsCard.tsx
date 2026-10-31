@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 export const ToolsCard = ( {tool} : {tool : ToolsType} ) => {
   return (
     <motion.div variants={fadeUp} className="border border-neutral-700 rounded-md flex flex-col justify-center items-center py-4">
-      <img src={tool.imgSrc} alt={tool.label} />
+      <img src={tool.imgSrc} alt={tool.label} height='40' width='40'/>
 
       <p className="font-bold mt-2">{tool.label}</p>
     </motion.div>

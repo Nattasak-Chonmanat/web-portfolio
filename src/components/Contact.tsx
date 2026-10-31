@@ -78,6 +78,9 @@ export const Contact = () => {
           <Controller
             name='company'
             control={form.control}
+            rules={
+              {required: 'Company name is required.'}
+            }
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>Company</FieldLabel>

@@ -23,7 +23,7 @@ export const Profile = () => {
         </div>
         <div>
           <p className='text-sm text-neutral-300 capitalize'>Based in:</p>
-          <p>Rangsit, Thailand</p>
+          <p>Pathum Thani, Thailand</p>
         </div>
         <div className='flex gap-3 pt-2 text-neutral-500'>
           {socialLinks.map((link) => {
@@ -32,6 +32,7 @@ export const Profile = () => {
               <a
                 href={link.link}
                 key={link.link}
+                target='_blank'
                 className='hover:text-primary transition duration-200 border-2 p-2 hover:border-primary rounded-full'
               >
                 <Icon className='size-6' />
@@ -39,7 +40,13 @@ export const Profile = () => {
             );
           })}
         </div>
-        <Button className='mt-2' size='lg'>Let's Work!</Button>
+        <Button
+          className='mt-2'
+          size='lg'
+          render={<a href='#contact'></a>}
+        >
+          Let's Work!
+        </Button>
       </div>
     </aside>
   );

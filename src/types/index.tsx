@@ -41,3 +41,12 @@ export type LinksType = {
   link: string;
   icon: React.ElementType;
 };
+
+export type ActivityType = {
+  imgSrc: string;
+  title: string;
+  organization: string;
+  date: string;
+  description: string;
+  tags: string[];
+};

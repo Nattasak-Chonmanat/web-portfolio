@@ -2,6 +2,7 @@
  * Types
  */
 import type {
+  ActivityType,
   ExperienceType,
   LinksType,
   ProjectType,
@@ -22,12 +23,10 @@ import {
   // Rocket,
   // Smartphone,
   User,
+  Sparkles
 } from 'lucide-react';
 
-import {
-  FaFacebook,
-  FaInstagram,
-} from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaGithub } from 'react-icons/fa6';
 
 const navLinks: LinksType[] = [
   { label: 'Home', link: '#hero', icon: Home },
@@ -36,6 +35,11 @@ const navLinks: LinksType[] = [
     label: 'Projects',
     link: '#projects',
     icon: Briefcase,
+  },
+  {
+    label: 'Activities',
+    link: '#activities',
+    icon: Sparkles,
   },
   // {
   //   label: 'Services',
@@ -55,13 +59,18 @@ const socialLinks: LinksType[] = [
   {
     icon: FaFacebook,
     label: 'Facebook',
-    link: '/#',
+    link: 'https://www.facebook.com/nattasak.chonmanat/',
   },
   {
     icon: FaInstagram,
     label: 'Instagram',
-    link: '/#',
-  }
+    link: 'https://www.instagram.com/nattasak8/',
+  },
+  {
+    icon: FaGithub,
+    label: 'Github',
+    link: 'https://github.com/Nattasak-Chonmanat',
+  },
 ];
 
 const projectsData: ProjectType[] = [
@@ -87,6 +96,27 @@ const projectsData: ProjectType[] = [
   },
 ];
 
+const activitiesData: ActivityType[] = [
+  {
+    imgSrc: '/images/p1.jpg',
+    title: 'Exchange Program Participant',
+    organization: 'Osaka Metropolitan University',
+    date: '2025',
+    description:
+      'Participated in an international exchange program, gaining exposure to different cultures, perspectives, and learning environments while improving communication and adaptability.',
+    tags: ['Exchange Program', 'Cross-cultural'],
+  },
+  {
+    imgSrc: '/images/p2.jpg',
+    title: 'Hackathon Participant',
+    organization: 'Thammasat University',
+    date: '2026',
+    description:
+      'Collaborated with a team to develop a software solution, exchange ideas, and apply technical knowledge to solve real-world problems within a limited timeframe.',
+    tags: ['Hackathon', 'Teamwork', 'Development'],
+  },
+];
+
 const education: ExperienceType[] = [
   {
     year: '2023 – Present',
@@ -107,12 +137,14 @@ const experience: ExperienceType[] = [
 
 const tools: ToolsType[] = [
   {
-    label: 'Figma',
-    imgSrc: '/images/tools/figma.svg',
+    label: 'HTML',
+    imgSrc:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
   },
   {
     label: 'CSS',
-    imgSrc: '/images/tools/css3.svg',
+    imgSrc:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
   },
   {
     label: 'Tailwind CSS',
@@ -123,8 +155,9 @@ const tools: ToolsType[] = [
     imgSrc: '/images/tools/react.svg',
   },
   {
-    label: 'JavaScript',
-    imgSrc: '/images/tools/javascript.svg',
+    label: 'TypeScript',
+    imgSrc:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
   },
   {
     label: 'Node.js',
@@ -135,8 +168,19 @@ const tools: ToolsType[] = [
     imgSrc: '/images/tools/expressjs.svg',
   },
   {
-    label: 'Mongodb',
-    imgSrc: '/images/tools/mongodb.svg',
+    label: 'Spring',
+    imgSrc:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg',
+  },
+  {
+    label: 'PostgresSql',
+    imgSrc:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+  },
+  {
+    label: 'AWS',
+    imgSrc:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain.svg',
   },
 ];
 
@@ -215,6 +259,7 @@ const tools: ToolsType[] = [
 export {
   socialLinks,
   projectsData,
+  activitiesData,
   education,
   experience,
   tools,
@@ -223,3 +268,5 @@ export {
   // statsData,
   // testimonials,
 };
+
+
