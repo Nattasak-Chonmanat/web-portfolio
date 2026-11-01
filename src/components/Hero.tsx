@@ -32,19 +32,18 @@ export const Hero = () => {
       >
         <Button render={<a href='#projects'>My Projects</a>}></Button>
 
-        <Button
-          variant='outline'
-          className='cursor-pointer'
-          render={
-            <a
-              href='/Nattasak_CV.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-            />
-          }
+        <a
+          href='/Nattasak_Resume.pdf'
+          target='_blank'
+          rel='noopener noreferrer'
         >
-          View CV
-        </Button>
+          <Button
+            variant='outline'
+            className='cursor-pointer'
+          >
+            View CV
+          </Button>
+        </a>
       </motion.div>
     </motion.section>
   );
