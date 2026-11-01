@@ -1,11 +1,18 @@
 import { socialLinks } from '@/constants';
 import { Button } from './ui/button';
+import { motion } from 'motion/react';
+import { staggerContainer } from '@/lib/animations';
 
 export const Profile = () => {
   return (
-    <aside
+    <motion.section
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: true, amount: 0.3 }}
+      variants={staggerContainer(0)}
       className='max-w-3xl border m-6 border-neutral-600 bg-neutral-900 text-white p-6 rounded-lg lg:sticky
     lg:left-0 lg:top-6 lg:w-96'
+      id='profile'
     >
       <div className='flex flex-col gap-4'>
         <div className='flex items-center justify-between gap-x-10'>
@@ -48,6 +55,6 @@ export const Profile = () => {
           Let's Work!
         </Button>
       </div>
-    </aside>
+    </motion.section>
   );
 };

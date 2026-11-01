@@ -2,6 +2,7 @@ export type ProjectType = {
   imgSrc: string;
   title: string;
   tags: string[];
+  link: string;
 };
 
 export type ExperienceType = {
