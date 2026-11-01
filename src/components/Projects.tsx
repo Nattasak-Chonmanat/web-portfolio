@@ -29,7 +29,7 @@ export const Projects = () => {
           <ProjectCard
             imgSrc={p.imgSrc}
             title={p.title}
-            // projectLink={p.projectLink}
+            link={p.link}
             tags={p.tags}
             key={i}
           />

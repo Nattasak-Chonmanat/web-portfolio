@@ -63,21 +63,25 @@ const projectsData: ProjectType[] = [
     imgSrc: '/images/project-demo-1.png',
     title: 'Health Risk Mapping',
     tags: ['Full Stack', 'Development'],
+    link: 'https://github.com/Nattasak-Chonmanat/health-risk-mapping',
   },
   {
     imgSrc: '/images/project-demo-2.png',
     title: 'FitJAD',
     tags: ['Back End', 'Development'],
+    link: 'https://github.com/Nattasak-Chonmanat/fitness_backend_cs251',
   },
   {
     imgSrc: '/images/project-demo-3.png',
-    title: 'Full Stack Link Chat Bot',
-    tags: ['Full Stack', 'Development'],
+    title: `N'Sound Line Chat Bot`,
+    tags: ['Full Stack', 'Cloud', 'Development'],
+    link: 'https://github.com/Nattasak-Chonmanat/N-Sound-2.0',
   },
   {
     imgSrc: '/images/project-demo-5.png',
     title: 'End-to-End DevSecOps',
     tags: ['DevOps', 'Cloud'],
+    link: 'https://github.com/Suphawit-Hngosakul/CS365',
   },
 ];
 
