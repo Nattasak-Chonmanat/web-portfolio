@@ -29,7 +29,7 @@ export const ProjectDetail = () => {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       className='mt-10 scroll-mt-10 pb-20'
-      id={project.slug}
+      id={slug}
     >
       <Link
         to='/#projects'
