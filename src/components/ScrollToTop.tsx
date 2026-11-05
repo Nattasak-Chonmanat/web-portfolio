@@ -7,13 +7,25 @@ type ScrollToTopProps = {
 };
 
 export const ScrollToTop = ({ lenisRef }: ScrollToTopProps) => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    lenisRef.current?.scrollTo(0, {
-      immediate: true,
-    });
-  }, [pathname, lenisRef]);
+    const lenis = lenisRef.current;
+
+    if (hash) {
+      const target = document.querySelector(hash);
+
+      if (target) {
+        lenis?.scrollTo(target as HTMLElement, {
+          immediate: false,
+        });
+      }
+    } else {
+      lenis?.scrollTo(0, {
+        immediate: true,
+      });
+    }
+  }, [pathname, hash, lenisRef]);
 
   return null;
 };

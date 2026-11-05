@@ -71,7 +71,7 @@ const projectsData: ProjectType[] = [
       'Terraform',
       'Kubernetes ',
     ],
-    link: 'https://github.com/Suphawit-Hngosakul/CS365'
+    link: 'https://github.com/Suphawit-Hngosakul/CS365',
   },
   {
     slug: 'n-sound-line-chat-bot',
@@ -85,7 +85,7 @@ const projectsData: ProjectType[] = [
       'In addition to collecting survey responses, the chatbot captures GPS location data to associate each submission with its geographical coordinates. This enables the collected acoustic data to be analyzed alongside location information, supporting further research and spatial analysis of environmental sound conditions.',
     ],
     technologies: ['HTML', 'CSS', 'Python', 'AWS', 'Line API'],
-    link: 'https://github.com/Nattasak-Chonmanat/N-Sound-2.0'
+    link: 'https://github.com/Nattasak-Chonmanat/N-Sound-2.0',
   },
   {
     slug: 'health-risk-mapping',
@@ -99,7 +99,7 @@ const projectsData: ProjectType[] = [
       'The project focuses on presenting complex survey data through an intuitive geospatial interface, making environmental information easier for the general public to explore and understand while supporting further analysis of noise exposure and its potential relationship with human health.',
     ],
     technologies: ['HTML', 'CSS', 'JS', 'Postgres'],
-    link: 'https://github.com/Nattasak-Chonmanat/health-risk-mapping'
+    link: 'https://github.com/Nattasak-Chonmanat/health-risk-mapping',
   },
   {
     slug: 'fitjad',
@@ -113,7 +113,7 @@ const projectsData: ProjectType[] = [
       'The project also integrates Swagger UI for API documentation and testing, allowing developers to explore available endpoints and interact with the backend directly. Overall, FitJAD demonstrates practical experience in REST API development, relational database integration, and containerized application deployment.',
     ],
     technologies: ['Spring Boot', 'MySQL', 'Docker', 'Swagger UI'],
-    link: 'https://github.com/Nattasak-Chonmanat/fitness_backend_cs251'
+    link: 'https://github.com/Nattasak-Chonmanat/fitness_backend_cs251',
   },
 ];
 

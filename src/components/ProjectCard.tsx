@@ -8,7 +8,7 @@ export const ProjectCard = ({ project }: { project: ProjectType }) => {
 
   return (
     <Link
-      to={`/projects/${slug}`}
+      to={`/projects/${slug}#${slug}`}
       className='block cursor-pointer'
     >
       <motion.div
