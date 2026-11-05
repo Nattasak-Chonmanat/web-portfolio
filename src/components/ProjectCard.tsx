@@ -1,13 +1,14 @@
 import { fadeUp } from '@/lib/animations';
 import type { ProjectType } from '@/types';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
-export const ProjectCard = ({ imgSrc, tags, title, link }: ProjectType) => {
+export const ProjectCard = ({ project }: { project: ProjectType }) => {
+  const { imgSrc, tags, title, slug } = project;
+
   return (
-    <a
-      href={link}
-      target='_blank'
-      rel='noopener noreferrer'
+    <Link
+      to={`/projects/${slug}`}
       className='block cursor-pointer'
     >
       <motion.div
@@ -22,17 +23,17 @@ export const ProjectCard = ({ imgSrc, tags, title, link }: ProjectType) => {
           />
         </figure>
 
-        <div className='absolute bottom-0 p-2 flex gap-2'>
+        <div className='absolute bottom-0 left-0 flex flex-wrap gap-2 p-2'>
           {tags.map((tag) => (
             <span
               key={tag}
-              className='bg-background hover:bg-primary hover:text-black py-1 px-2 text-sm rounded-sm transition duration-200'
+              className='whitespace-nowrap bg-background hover:bg-primary hover:text-black py-1 px-2 text-xs md:text-sm rounded-sm transition duration-200'
             >
               {tag}
             </span>
           ))}
         </div>
       </motion.div>
-    </a>
+    </Link>
   );
 };

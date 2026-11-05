@@ -2,8 +2,11 @@ import { socialLinks } from '@/constants';
 import { Button } from './ui/button';
 import { motion } from 'motion/react';
 import { staggerContainer } from '@/lib/animations';
+import { useLocation } from 'react-router-dom';
 
 export const Profile = () => {
+  const location = useLocation();
+
   return (
     <motion.section
       initial='hidden'
@@ -50,7 +53,7 @@ export const Profile = () => {
         <Button
           className='mt-2'
           size='lg'
-          render={<a href='#contact'></a>}
+          render={<a href={location.pathname === '/' ? '#contact' : '/#contact'}></a>}
         >
           Let's Work!
         </Button>

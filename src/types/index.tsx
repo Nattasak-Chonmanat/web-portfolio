@@ -1,8 +1,13 @@
 export type ProjectType = {
+  slug: string;
   imgSrc: string;
+  images: string[];
   title: string;
   tags: string[];
+  description: string[];
+  technologies: string[];
   link: string;
+  liveUrl?: string;
 };
 
 export type ExperienceType = {

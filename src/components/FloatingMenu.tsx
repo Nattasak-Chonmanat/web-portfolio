@@ -1,9 +1,11 @@
 import { navLinks } from '@/constants';
 import { cn } from 'cn';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const FloatingMenu = () => {
   const [active, setActive] = useState('#hero');
+  const location = useLocation();
 
   return (
     <div
@@ -14,7 +16,7 @@ const FloatingMenu = () => {
         const Icon = link.icon;
         return (
           <a
-            href={link.link}
+            href={location.pathname === '/' ? link.link : `/${link.link}`}
             key={link.label}
             onClick={() => setActive(link.link)}
             className={cn(

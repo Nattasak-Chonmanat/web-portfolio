@@ -10,9 +10,11 @@ import { MenuIcon } from 'lucide-react';
 import { navLinks, socialLinks } from '@/constants';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useLocation } from 'react-router-dom';
 
 export const Sidebar = () => {
   const [active, setActive] = useState('#hero');
+  const location = useLocation();
   return (
     <Sheet>
       <SheetTrigger
@@ -38,7 +40,7 @@ export const Sidebar = () => {
             const Icon = link.icon;
             return (
               <a
-                href={link.link}
+                href={location.pathname === '/' ? link.link : `/${link.link}`}
                 key={link.label}
                 onClick={() => {
                   setActive(link.link);
