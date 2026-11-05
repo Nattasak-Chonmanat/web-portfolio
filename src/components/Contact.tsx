@@ -12,6 +12,8 @@ import { SectionHeaders } from '@/components/SectionHeaders';
 import { Button } from '@/components/ui/button';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useState } from 'react';
+import { Send } from 'lucide-react';
+import { Spinner } from './ui/spinner';
 
 type ContactFormValues = {
   name: string;
@@ -223,8 +225,10 @@ export const Contact = () => {
         <Button
           type='submit'
           size='lg'
+          className='cursor-pointer'
           disabled={form.formState.isSubmitting || !captchaToken}
         >
+          {form.formState.isSubmitting ? <Spinner /> : <Send/>}
           {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
         </Button>
       </form>
